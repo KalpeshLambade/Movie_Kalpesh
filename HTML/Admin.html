@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../CSS/style.css" />
+    <title>Admin</title>
+  </head>
+  <body>
+    <div id="admin">
+      <h2>Admin</h2>
+      <div id="table">
+        <div class="t_head">
+          <p>Id</p>  
+          <p>Name</p>  
+          <p>Number</p> 
+          <p>Email</p>   
+          <p>password</p>  
+        </div>
+        <div id="t_data">
+            <div>
+                <p>Id</p>  
+                <p>Name</p>  
+                <p>Email</p>  
+                <p>Number</p>
+                <p>password</p>  
+                <p>Watchlist</p> 
+            </div>
+            <div></div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      window.onload = function () {
+        let dataFromLs = JSON.parse(localStorage.getItem("n_adminData"));
+
+        let userInfo = JSON.parse(localStorage.getItem("n_users"));
+        let temp = [];
+        let divFromHtml = document.getElementById("t_data");
+
+        if (dataFromLs) {
+          for (let i = 0; i < userInfo.length; i++) {
+            temp += `<div>
+                <p>${i+1}</p>  
+                <p>${userInfo[i].username}</p>  
+                <p>${userInfo[i].number}</p>  
+                <p>${userInfo[i].email}</p>  
+                <p>${userInfo[i].password}</p>
+                <div><span>${userInfo[i].watchlist}</span></div>  
+            </div>`
+              
+          }
+
+          divFromHtml.innerHTML = temp;
+        } else {
+          window.location.href = "./AdminLog.html";
+          alert("Login to Admin");
+        }
+      };
+    </script>
+  </body>
+</html>

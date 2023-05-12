@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../CSS/style.css" />
+    <title>SinglePage</title>
+  </head>
+  <body>
+    <div id="singlePage">
+      <nav id="home_nav">
+        <div class="home_nav_l">
+          <img
+            src="https://www.freepnglogos.com/uploads/netflix-logo-0.png"
+            class="adj-img"
+            alt="netflix logo"
+          />
+        </div>
+        <div class="home_nav_r" id="display_userName">
+          <p>UNLIMITED TV SHOWS & MOVIES</p>
+          <button>LogIn</button>
+          <!-- <button></button> -->
+        </div>
+      </nav>
+
+      <div id="singleProduct">
+        <div class="singleProduct_l">
+          <p>Name</p>
+          <p>Rating</p>
+          <p>Descriptions</p>
+          <button>Add to Watchlist</button>
+        </div>
+        <div class="singleProduct_r">
+          <img src="" alt="image" class="adj-img" />
+        </div>
+
+      </div>
+    </div>
+
+    <script>
+        window.onload= function(){
+            let displayHTML = document.getElementById("singleProduct");
+            let currntShow = JSON.parse(localStorage.getItem("n_currentShow"));
+
+            displayHTML.innerHTML = `<div class="singleProduct_l">
+          <p>${currntShow .showName}</p>
+          <p>${currntShow .showRating}</p>
+          <p>${currntShow .showDes}</p>
+          <button onclick="addtoWatchList()">Add to Watchlist</button>
+        </div>
+        <div class="singleProduct_r">
+          <img src="${currntShow .showImage}" alt="image" class="adj-img" />
+        </div>`;
+        }
+    </script>
+
+    <script src="../JS/script.js"></script>
+  </body>
+</html>

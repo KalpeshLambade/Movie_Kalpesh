@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../CSS/style.css" />
+    <title>Register</title>
+  </head>
+  <body>
+    <div id="signUp">
+      <div>
+        <p class="signUp_title">SignUP</p>
+        <form onsubmit="signUp(event)">
+          <input type="text" placeholder="userName" id="n_username"/>
+          <input type="number" placeholder="Number" id="n_number"/>
+          <input type="email" placeholder="Email" id="n_email"/>
+          <input type="password" placeholder="password" id="n_password"/>
+          <input type="submit" value="signUp" />
+        </form>
+        <div class="signup_tc">
+          <p>Already on Netflix? <em onclick="window.location.href='./Login.html' ">Log in now.</em></p>
+          <p>
+            This page is protected by Google reCAPTCHA to ensure you're not a
+            bot. Learn more.
+          </p>
+        </div>
+      </div>
+    </div>
+
+   <script src="../JS/script.js"></script>
+  </body>
+</html>

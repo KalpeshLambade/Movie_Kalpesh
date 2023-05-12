@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../CSS/style.css" />
+    <title>HomePage</title>
+  </head>
+  <body>
+    <div id="home">
+      <nav id="home_nav">
+        <div class="home_nav_l">
+          <img
+            src="https://www.freepnglogos.com/uploads/netflix-logo-0.png"
+            class="adj-img"
+            alt="netflix logo"
+          />
+        </div>
+        <div class="home_nav_r" id="display_userName">
+          <p>UNLIMITED TV SHOWS & MOVIES</p>
+          <button>LogIn</button>
+          <!-- <button></button> -->
+        </div>
+      </nav>
+
+      <div id="show_title">
+        <h2>TV Shows</h2>
+        <p>
+          These days, the small screen has some very big things to offer. From
+          sitcoms to dramas to travel and talk shows, these are all the best
+          programs on TV.
+        </p>
+      </div>
+
+      <div id="n_shows">
+        <div class="shows">
+          <h4>US TV Show</h4>
+          <div id="display_show">
+            <div class="show_dtl">
+              <div>
+                <img src="" alt="shows" class="adj-img" />
+              </div>
+              <p>Name</p>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+
+    <script>
+      window.onload = function () {
+        let currentData = JSON.parse(localStorage.getItem("net_currentUser"));
+        let displayUser = document.getElementById("display_userName");
+        if (currentData) {
+          displayUser.innerHTML = `<p>UNLIMITED TV SHOWS & MOVIES</p>
+          <button onclick="logout()">Logout</button>
+          <button>${currentData.username}</button> `;
+        }
+
+        let displayShows = document.getElementById("n_shows");
+        let n_shows = JSON.parse(localStorage.getItem("n_shows"));
+        let temp = [];
+
+        for (let i = 0; i < n_shows.length; i++) {
+          temp += `<div class="show_dtl" onclick='singeleShow(${JSON.stringify(
+            n_shows[i]
+          )})' >
+              <div>
+                <img src="${n_shows[i].showImage}" alt="shows" class="adj-img">
+              </div>
+              <p>${n_shows[i].showName}</p>
+            </div>`;
+        }
+
+        displayShows.innerHTML = temp;
+      };
+      function singeleShow(prop) {
+        let currentShow = JSON.stringify(prop);
+        localStorage.setItem("n_currentShow", currentShow);
+        window.location.href = "./SinglePage.html";
+      }
+    </script>
+
+    <script src="../JS/script.js"></script>
+  </body>
+</html>
